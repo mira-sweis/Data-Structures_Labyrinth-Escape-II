@@ -1,0 +1,132 @@
+// gdb log.txt file. Showing the debugging process 
+// for finding the path out of my personalized regular and twisty maze.
+// By: Mira Sweis
+// CS251 Proj4 UIC Spring 2022
+
+//
+// For Regular Maze:
+//
+
+Breakpoint 1, main () at ExploreTheRegularLabyrinth.cpp:19
+19      if (isPathToFreedom(start, kPathOutOfRegularMaze)) {
+(gdb) i locals
+m = {_vptr.Maze = 0x555555763bf8 <vtable for Maze+16>, grid = {
+    _vptr.Grid = 0x555555763c18 <vtable for Grid<MazeCell*>+16>, NumRows = 4, 
+    Rows = 0x555555776e90}, numRows = 4, numCols = 4, kNumTwistyRooms = 12}
+start = 0x5555557772f0
+(gdb) p* start
+$1 = {whatsHere = "", north = 0x0, south = 0x555555777430, east = 0x555555777340, 
+  west = 0x0}
+(gdb) p*start->south
+$2 = {whatsHere = "", north = 0x5555557772f0, south = 0x0, east = 0x0, west = 0x0}
+(gdb) p*start->north
+Cannot access memory at address 0x0
+(gdb) p* start->south->north
+$3 = {whatsHere = "", north = 0x0, south = 0x555555777430, east = 0x555555777340, 
+  west = 0x0}
+(gdb) p*start->east
+$4 = {whatsHere = "Spellbook", north = 0x0, south = 0x555555777480, east = 0x0, 
+  west = 0x5555557772f0}
+(gdb) p* start->east->south
+$5 = {whatsHere = "", north = 0x555555777340, south = 0x5555557775c0, 
+  east = 0x5555557774d0, west = 0x0}
+(gdb) p* start->east->south->south
+$6 = {whatsHere = "", north = 0x555555777480, south = 0x555555777700, east = 0x0, 
+  west = 0x555555777570}
+(gdb) p* start->east->south->south->west
+$7 = {whatsHere = "", north = 0x0, south = 0x5555557776b0, east = 0x5555557775c0, west = 0x0}
+(gdb) p*start->east->south->south->south
+$8 = {whatsHere = "", north = 0x5555557775c0, south = 0x0, east = 0x0, west = 0x0}
+(gdb) p*start->east->south->south->west->south
+$9 = {whatsHere = "", north = 0x555555777570, south = 0x0, east = 0x0, west = 0x0}
+(gdb) p*start->east->south
+$10 = {whatsHere = "", north = 0x555555777340, south = 0x5555557775c0, east = 0x5555557774d0, 
+  west = 0x0}
+(gdb) p*start->east->south->east
+$11 = {whatsHere = "", north = 0x0, south = 0x555555777610, east = 0x0, west = 0x555555777480}
+(gdb) p*start->east->south->east->south
+$12 = {whatsHere = "", north = 0x5555557774d0, south = 0x555555777750, east = 0x0, west = 0x0}
+(gdb) p*start->east->south->east->south->south
+$13 = {whatsHere = "", north = 0x555555777610, south = 0x0, east = 0x5555557777a0, west = 0x0}
+(gdb) p*start->east
+$14 = {whatsHere = "Spellbook", north = 0x0, south = 0x555555777480, east = 0x0, 
+  west = 0x5555557772f0}
+(gdb) p*start
+$15 = {whatsHere = "", north = 0x0, south = 0x555555777430, east = 0x555555777340, west = 0x0}
+(gdb) p*start->east->south
+$16 = {whatsHere = "", north = 0x555555777340, south = 0x5555557775c0, east = 0x5555557774d0, 
+  west = 0x0}
+(gdb) p*start->east->south->west
+Cannot access memory at address 0x0
+(gdb) p*start->east->south->south
+$17 = {whatsHere = "", north = 0x555555777480, south = 0x555555777700, east = 0x0, 
+  west = 0x555555777570}
+(gdb) p*start->east->south->south->west
+$18 = {whatsHere = "", north = 0x0, south = 0x5555557776b0, east = 0x5555557775c0, west = 0x0}
+(gdb) p*start->east->south->south->west->south
+$19 = {whatsHere = "", north = 0x555555777570, south = 0x0, east = 0x0, west = 0x0}
+(gdb) p*start->east->south
+$20 = {whatsHere = "", north = 0x555555777340, south = 0x5555557775c0, east = 0x5555557774d0, 
+  west = 0x0}
+(gdb) p*start->east->south->east
+$21 = {whatsHere = "", north = 0x0, south = 0x555555777610, east = 0x0, west = 0x555555777480}
+(gdb) p*start->east->south->east->south
+$22 = {whatsHere = "", north = 0x5555557774d0, south = 0x555555777750, east = 0x0, west = 0x0}
+(gdb) p*start->east->south->east->south->south
+$23 = {whatsHere = "", north = 0x555555777610, south = 0x0, east = 0x5555557777a0, west = 0x0}
+(gdb) p*start->east->south->east->south->south->east
+$24 = {whatsHere = "", north = 0x555555777660, south = 0x0, east = 0x0, west = 0x555555777750}
+(gdb) p*start->east->south->east->south->south->east->north
+$25 = {whatsHere = "", north = 0x555555777520, south = 0x5555557777a0, east = 0x0, west = 0x0}
+(gdb) p*start->east->south->east->south->south->east->north->north
+$26 = {whatsHere = "", north = 0x5555557773e0, south = 0x555555777660, east = 0x0, west = 0x0}
+(gdb) p*start->east->south->east->south->south->east->norht->north->north
+There is no member or method named norht.
+(gdb) p*start->east->south->east->south->south->east->north->north->north
+$27 = {whatsHere = "Wand", north = 0x0, south = 0x555555777520, east = 0x0, west = 0x555555777390}
+(gdb) p*start->east->south->east->south->south->east->north->north->north->west
+$28 = {whatsHere = "Potion", north = 0x0, south = 0x0, east = 0x5555557773e0, west = 0x0}
+//
+// For Twisty Maze:
+//
+// instead of drawing out the maze I just checked where each memory address
+// was mapped to. Then, finding the path out from there based off which address
+// had the special objects.
+
+Breakpoint 1, main () at ExploreTheTwistyLabyrinth.cpp:20
+20      if (isPathToFreedom(start, kPathOutOfTwistyMaze)) {
+(gdb) i locals
+m = {_vptr.Maze = 0x555555764bf0 <vtable for Maze+16>, grid = {
+    _vptr.Grid = 0x555555764c10 <vtable for Grid<MazeCell*>+16>, NumRows = 4, 
+    Rows = 0x555555777e70}, numRows = 4, numCols = 4, kNumTwistyRooms = 12}
+start = 0x5555557787d0
+(gdb) p*start
+$1 = {whatsHere = "", north = 0x0, south = 0x555555778a00, east = 0x5555557788c0, 
+  west = 0x555555778870}
+(gdb) p*start->south
+$2 = {whatsHere = "", north = 0x0, south = 0x555555778b80, east = 0x5555557787d0, west = 0x0}
+(gdb) p*start->east
+$3 = {whatsHere = "", north = 0x5555557789b0, south = 0x0, east = 0x5555557787d0, west = 0x555555778870}
+(gdb) p*start->west
+$4 = {whatsHere = "", north = 0x0, south = 0x0, east = 0x5555557788c0, west = 0x5555557787d0}
+(gdb) p*start->west->west
+$5 = {whatsHere = "", north = 0x0, south = 0x555555778a00, east = 0x5555557788c0, west = 0x555555778870}
+(gdb) s*start->south->south
+Value can't be converted to integer.
+(gdb) p*start->south->south
+$6 = {whatsHere = "", north = 0x5555557789b0, south = 0x555555778820, east = 0x0, west = 0x555555778a00}
+(gdb) p*start->south->south->south
+$7 = {whatsHere = "Spellbook", north = 0x0, south = 0x0, east = 0x0, west = 0x555555778b80}
+(gdb) p*start->south->south->north
+$8 = {whatsHere = "Wand", north = 0x0, south = 0x5555557788c0, east = 0x555555778b80, west = 0x555555778bd0}
+(gdb) p*start->south->south->north->west
+$9 = {whatsHere = "", north = 0x0, south = 0x0, east = 0x5555557789b0, west = 0x555555778a50}
+(gdb) p*start->south->south->north->west->west
+$10 = {whatsHere = "", north = 0x0, south = 0x555555778960, east = 0x0, west = 0x555555778bd0}
+(gdb) p*start->south->south->north->west->west->south
+$11 = {whatsHere = "", north = 0x0, south = 0x555555778910, east = 0x555555778a50, west = 0x555555778aa0}
+(gdb) p*start->south->south->north->west->west->south->south
+$12 = {whatsHere = "Potion", north = 0x0, south = 0x0, east = 0x0, west = 0x555555778960}
+(gdb) p*start->south->south->north->west->west->south->west
+$13 = {whatsHere = "", north = 0x555555778960, south = 0x0, east = 0x0, west = 0x0}
+(gdb) 
